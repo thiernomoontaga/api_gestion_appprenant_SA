@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app_1.default.listen(PORT, () => {
-    console.log(`Serveur démarré sur le port http:localhost:${PORT}/`);
+    console.log(`Serveur démarré sur le port http://localhost:${PORT}/`);
 });

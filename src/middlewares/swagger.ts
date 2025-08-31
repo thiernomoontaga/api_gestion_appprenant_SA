@@ -6,6 +6,6 @@ import path from "path";
 const router = Router();
 const swaggerDocument = YAML.load(path.join(process.cwd(), "openapi.yaml"));
 
-router.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 export default router;

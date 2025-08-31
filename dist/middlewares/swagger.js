@@ -9,5 +9,5 @@ const express_1 = require("express");
 const path_1 = __importDefault(require("path"));
 const router = (0, express_1.Router)();
 const swaggerDocument = yamljs_1.default.load(path_1.default.join(process.cwd(), "openapi.yaml"));
-router.use("/documentation", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
+router.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
 exports.default = router;
