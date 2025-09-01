@@ -1,4 +1,3 @@
-// src/schemas/competence.schema.ts
 import { z } from "zod";
 export const createCompetenceSchema = z.object({
     libelle: z.string().min(2, "Le libellé est obligatoire"),

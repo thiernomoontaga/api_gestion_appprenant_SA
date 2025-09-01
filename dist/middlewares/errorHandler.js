@@ -1,4 +1,4 @@
-export function errorHandler(err, _, res, __) {
-    console.error(err);
-    res.status(500).json({ message: "" });
+export function errorHandler(err, req, res, next) {
+    const status = err.status || 500;
+    res.status(status).json({ error: err.message || "Erreur serveur" });
 }
