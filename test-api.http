@@ -1,0 +1,68 @@
+# Tests pour l'API Gestion Apprenant SA
+# Utilisez avec l'extension REST Client de VS Code ou un outil comme Postman/Insomnia
+
+### Test de base
+GET http://localhost:4000/
+
+### === REFERENTIELS ===
+
+### Récupérer tous les référentiels
+GET http://localhost:4000/referentiels
+
+### Récupérer un référentiel par ID
+GET http://localhost:4000/referentiels/1
+
+### Créer un nouveau référentiel
+POST http://localhost:4000/referentiels
+Content-Type: application/json
+
+{
+  "libelle": "Développement Web Full Stack",
+  "description": "Formation complète en développement web",
+  "promotionId": 1
+}
+
+### Mettre à jour un référentiel
+PUT http://localhost:4000/referentiels/1
+Content-Type: application/json
+
+{
+  "libelle": "Développement Web Full Stack - Mis à jour",
+  "description": "Formation complète en développement web moderne"
+}
+
+### Supprimer un référentiel
+DELETE http://localhost:4000/referentiels/1
+
+### Récupérer les compétences d'un référentiel
+GET http://localhost:4000/referentiels/1/competences
+
+### === TAGS ===
+
+### Récupérer tous les tags
+GET http://localhost:4000/tags
+
+### Récupérer un tag par ID
+GET http://localhost:4000/tags/1
+
+### Créer un nouveau tag
+POST http://localhost:4000/tags
+Content-Type: application/json
+
+{
+  "libelle": "JavaScript",
+  "description": "Langage de programmation",
+  "competenceId": 1
+}
+
+### Mettre à jour un tag
+PUT http://localhost:4000/tags/1
+Content-Type: application/json
+
+{
+  "libelle": "JavaScript ES6+",
+  "description": "Langage de programmation moderne"
+}
+
+### Supprimer un tag
+DELETE http://localhost:4000/tags/1
