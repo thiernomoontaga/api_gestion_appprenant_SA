@@ -1,21 +1,35 @@
-// Initialisation d’Express
-import express from "express";
-import userRoutes from "./modules/users/user.routes";
-import profilSortieRoutes from "./modules/profilsorties/profilsortie.routes";
-import swaggerDoc from "./middlewares/swagger";
-import competenceRouter from "./modules/competence/competence.routes.js";
-
+import express from 'express';
+import cors from 'cors';
+import { profilesRoutes } from './routes/profiles.routes';
+import { utilisateurRoutes } from './routes/utilisateur.routes';
 
 const app = express();
 
+// Middlewares
+app.use(cors());
 app.use(express.json());
-app.use(swaggerDoc);
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/utilisateurs", userRoutes);
-app.use("/profilsorties", profilSortieRoutes);
-app.use("/competences", competenceRouter);
+// Route de santé
+app.get('/health', (req, res) => {
+  return res.json({
+    success: true,
+    message: 'API Suivi des Apprenants - Service en ligne',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Routes API
+app.use('/api/profiles', profilesRoutes);
+app.use('/api/users', utilisateurRoutes);
+
+app.use((req, res) => {
+  return res.status(404).json({
+    success: false,
+    error: 'Route non trouvée'
+  });
+});
+
 
 export default app;
-
-
 
