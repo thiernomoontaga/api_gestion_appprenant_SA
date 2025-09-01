@@ -1,0 +1,19 @@
+# PUT http://localhost:3000/competences/1 HTTP/1.1
+# content-type: application/json
+
+# {
+#   "libelle": "Programmation language C",
+#   "description": "Compétence en JS, TS et Node"
+# }
+
+# DELETE http://localhost:3000/competences/1 HTTP/1.1
+
+# POST http://localhost:3000/competences HTTP/1.1
+# content-type: application/json
+
+# {
+#   "libelle": "Programmation language R",
+#   "description": "Compétence en JS, TS et Node"
+# }
+
+GET http://localhost:3000/competences HTTP/1.1
