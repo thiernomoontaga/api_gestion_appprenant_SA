@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { ProfileController } from "./profile.controller.js";
+import ProfileController from "./profile.controller.js";
 const ProfileRouter = Router();
-ProfileRouter.post("/", ProfileController.create);
-ProfileRouter.get("/", ProfileController.getAll);
-ProfileRouter.get("/:id", ProfileController.getOne);
-ProfileRouter.put("/:id", ProfileController.update);
-ProfileRouter.delete("/:id", ProfileController.delete);
+const controller = new ProfileController();
+ProfileRouter.post("/", controller.create.bind(controller));
+ProfileRouter.get("/", controller.getAll.bind(controller));
+ProfileRouter.get("/:id", controller.getOne.bind(controller));
+ProfileRouter.put("/:id", controller.update.bind(controller));
+ProfileRouter.delete("/:id", controller.delete.bind(controller));
 export default ProfileRouter;
