@@ -1,0 +1,402 @@
+openapi: 3.1.0
+info:
+  title: API Utilisateur
+  version: 1.0.0
+  description: Documentation OpenAPI/Swagger pour la gestion des utilisateurs
+servers:
+  - url: http://localhost:4000
+    description: Serveur local (Swagger UI sur le port 4000 et n'est pas dynamique avec .env)
+paths:
+  /utilisateurs:
+    post:
+      tags:
+        - Utilisateurs
+      summary: Créer un utilisateur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                prenom:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                login:
+                  type: string
+                password:
+                  type: string
+                photo:
+                  type: string
+                  nullable: true
+                profilId:
+                  type: integer
+                StatutUtilisateur:
+                  type: string
+                  enum: [DECEDE, RENVOYER, ACTIF, ABANDONNER]
+              required:
+                - nom
+                - prenom
+                - email
+                - login
+                - password
+                - profilId
+      responses:
+        "201":
+          description: Utilisateur créé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Erreur de validation ou utilisateur existe déjà
+    get:
+      tags:
+        - Utilisateurs
+      summary: Lister les utilisateurs (exemple)
+      responses:
+        "200":
+          description: Liste des utilisateurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /utilisateurs/{id}:
+    get:
+      tags:
+        - Utilisateurs
+      summary: Récupérer un utilisateur par ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID de l'utilisateur
+      responses:
+        "200":
+          description: Utilisateur trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: Utilisateur non trouvé
+    put:
+      tags:
+        - Utilisateurs
+      summary: Modifier uniquement le profil d'un utilisateur
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID de l'utilisateur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                prenom:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                login:
+                  type: string
+                password:
+                  type: string
+                photo:
+                  type: string
+                  nullable: true
+                profilId:
+                  type: integer
+                statutUtilisateur:
+                  type: string
+                  enum: [ACTIF, RENVOYER, DECEDE, ABANDONNER]
+              required:
+                - nom
+                - prenom
+                - email
+                - login
+                - password
+                - profilId
+                - StatutUtilisateur
+      responses:
+        "200":
+          description: Utilisateur mis à jour
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: Utilisateur non trouvé
+    patch:
+      tags:
+        - Utilisateurs
+      summary: Modifier uniquement le profil d'un utilisateur (partiel)
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID de l'utilisateur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                login:
+                  type: string
+                password:
+                  type: string
+                photo:
+                  type: string
+                  nullable: true
+                profilId:
+                  type: integer
+                statutUtilisateur:
+                  type: string
+                  enum: [ACTIF, RENVOYER, DECEDE, ABANDONNER]
+      responses:
+        "200":
+          description: Utilisateur modifié
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: Utilisateur non trouvé
+    delete:
+      tags:
+        - Utilisateurs
+      summary: Supprimer un utilisateur
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID de l'utilisateur
+      responses:
+        "200":
+          description: Utilisateur supprimé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "404":
+          description: Utilisateur non trouvé
+  /profilsorties:
+    get:
+      tags:
+        - ProfilsSorties
+      summary: Lister tous les profils de sortie
+      responses:
+        "200":
+          description: Liste des profils de sortie
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProfilSortie"
+    post:
+      tags:
+        - ProfilsSorties
+      summary: Créer un profil de sortie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfilSortieInput"
+      responses:
+        "201":
+          description: Profil de sortie créé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfilSortie"
+        "400":
+          description: Erreur de validation
+  /profilsorties/{id}:
+    get:
+      tags:
+        - ProfilsSorties
+      summary: Récupérer un profil de sortie par ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID du profil de sortie
+      responses:
+        "200":
+          description: Profil de sortie trouvé
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfilSortie"
+        "404":
+          description: Profil de sortie non trouvé
+    put:
+      tags:
+        - ProfilsSorties
+      summary: Remplacer un profil de sortie
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID du profil de sortie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfilSortieInput"
+      responses:
+        "200":
+          description: Profil de sortie mis à jour
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfilSortie"
+        "404":
+          description: Profil de sortie non trouvé
+    patch:
+      tags:
+        - ProfilsSorties
+      summary: Modifier partiellement un profil de sortie
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID du profil de sortie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfilSortieInput"
+      responses:
+        "200":
+          description: Profil de sortie modifié
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfilSortie"
+        "404":
+          description: Profil de sortie non trouvé
+    delete:
+      tags:
+        - ProfilsSorties
+      summary: Supprimer un profil de sortie
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID du profil de sortie
+      responses:
+        "200":
+          description: Profil de sortie supprimé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "404":
+          description: Profil de sortie non trouvé
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        nom:
+          type: string
+        email:
+          type: string
+        login:
+          type: string
+        photo:
+          type: string
+          nullable: true
+        profilId:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        profil:
+          type: object
+          properties:
+            id:
+              type: integer
+            libelle:
+              type: string
+    ProfilSortie:
+      type: object
+      properties:
+        id:
+          type: integer
+        libelle:
+          type: string
+        description:
+          type: string
+        referentielId:
+          type: integer
+        referentiel:
+          type: object
+          properties:
+            id:
+              type: integer
+            libelle:
+              type: string
+    ProfilSortieInput:
+      type: object
+      properties:
+        libelle:
+          type: string
+        description:
+          type: string
+        referentielId:
+          type: integer
+      required:
+        - libelle
+        - description
+        - referentielId
