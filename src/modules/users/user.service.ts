@@ -3,8 +3,8 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-export default {
-  update: async (id: number, data: any) => {
+class UserService {
+  static async update(id: number, data: any) {
     const utilisateur = await prisma.utilisateur.findUnique({ where: { id } });
     if (!utilisateur) throw new Error("Utilisateur non trouvé");
     let updateData = { ...data };
@@ -16,8 +16,9 @@ export default {
       data: updateData,
       include: { profil: true },
     });
-  },
-  partialUpdate: async (id: number, data: any) => {
+  }
+
+  static async partialUpdate(id: number, data: any) {
     const utilisateur = await prisma.utilisateur.findUnique({ where: { id } });
     if (!utilisateur) throw new Error("Utilisateur non trouvé");
     let updateData = { ...data };
@@ -29,17 +30,20 @@ export default {
       data: updateData,
       include: { profil: true },
     });
-  },
-  getAll: async () => {
+  }
+
+  static async getAll() {
     return await prisma.utilisateur.findMany({ include: { profil: true } });
-  },
-  getById: async (id: number) => {
+  }
+
+  static async getById(id: number) {
     return await prisma.utilisateur.findUnique({
       where: { id },
       include: { profil: true },
     });
-  },
-  create: async (
+  }
+
+  static async create(
     nom: string,
     prenom: string,
     email: string,
@@ -47,7 +51,7 @@ export default {
     password: string,
     profilId: number,
     statutUtilisateur: string = "ACTIF"
-  ) => {
+  ) {
     const existingUtilisateur = await prisma.utilisateur.findFirst({
       where: {
         OR: [{ email }, { login }],
@@ -76,11 +80,14 @@ export default {
     });
 
     return newUtilisateur;
-  },
-  delete: async (id: number) => {
+  }
+
+  static async delete(id: number) {
     const utilisateur = await prisma.utilisateur.findUnique({ where: { id } });
     if (!utilisateur) throw new Error("Utilisateur non trouvé");
     await prisma.utilisateur.delete({ where: { id } });
     return { message: "Utilisateur supprimé" };
-  },
-};
+  }
+}
+
+export default UserService;

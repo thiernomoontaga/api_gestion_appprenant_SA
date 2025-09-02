@@ -1,34 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
-const prisma = new client_1.PrismaClient();
-exports.default = {
-    getAll: async () => {
-        return await prisma.profilSortie.findMany({
+class ProfilSortieService {
+    constructor(prismaClient) {
+        this.prisma = prismaClient || new client_1.PrismaClient();
+    }
+    async getAll() {
+        return this.prisma.profilSortie.findMany({
             include: { referentiel: true },
         });
-    },
-    getById: async (id) => {
-        return await prisma.profilSortie.findUnique({
+    }
+    async getById(id) {
+        return this.prisma.profilSortie.findUnique({
             where: { id },
             include: { referentiel: true },
         });
-    },
-    create: async (data) => {
-        return await prisma.profilSortie.create({
+    }
+    async create(data) {
+        return this.prisma.profilSortie.create({
             data,
             include: { referentiel: true },
         });
-    },
-    update: async (id, data) => {
-        return await prisma.profilSortie.update({
+    }
+    async update(id, data) {
+        return this.prisma.profilSortie.update({
             where: { id },
             data,
             include: { referentiel: true },
         });
-    },
-    delete: async (id) => {
-        await prisma.profilSortie.delete({ where: { id } });
+    }
+    async delete(id) {
+        await this.prisma.profilSortie.delete({ where: { id } });
         return { message: "ProfilSortie supprimé" };
-    },
-};
+    }
+}
+const profilSortieService = new ProfilSortieService();
+exports.default = profilSortieService;

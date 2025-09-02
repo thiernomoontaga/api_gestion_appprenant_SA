@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const prisma = new client_1.PrismaClient();
-exports.default = {
-    update: async (id, data) => {
+class UserService {
+    static async update(id, data) {
         const utilisateur = await prisma.utilisateur.findUnique({ where: { id } });
         if (!utilisateur)
             throw new Error("Utilisateur non trouvé");
@@ -20,8 +20,8 @@ exports.default = {
             data: updateData,
             include: { profil: true },
         });
-    },
-    partialUpdate: async (id, data) => {
+    }
+    static async partialUpdate(id, data) {
         const utilisateur = await prisma.utilisateur.findUnique({ where: { id } });
         if (!utilisateur)
             throw new Error("Utilisateur non trouvé");
@@ -34,17 +34,17 @@ exports.default = {
             data: updateData,
             include: { profil: true },
         });
-    },
-    getAll: async () => {
+    }
+    static async getAll() {
         return await prisma.utilisateur.findMany({ include: { profil: true } });
-    },
-    getById: async (id) => {
+    }
+    static async getById(id) {
         return await prisma.utilisateur.findUnique({
             where: { id },
             include: { profil: true },
         });
-    },
-    create: async (nom, prenom, email, login, password, profilId, statutUtilisateur = "ACTIF") => {
+    }
+    static async create(nom, prenom, email, login, password, profilId, statutUtilisateur = "ACTIF") {
         const existingUtilisateur = await prisma.utilisateur.findFirst({
             where: {
                 OR: [{ email }, { login }],
@@ -71,12 +71,13 @@ exports.default = {
             },
         });
         return newUtilisateur;
-    },
-    delete: async (id) => {
+    }
+    static async delete(id) {
         const utilisateur = await prisma.utilisateur.findUnique({ where: { id } });
         if (!utilisateur)
             throw new Error("Utilisateur non trouvé");
         await prisma.utilisateur.delete({ where: { id } });
         return { message: "Utilisateur supprimé" };
-    },
-};
+    }
+}
+exports.default = UserService;

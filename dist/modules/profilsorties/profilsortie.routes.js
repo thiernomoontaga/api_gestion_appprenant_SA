@@ -5,11 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const profilsortie_controller_1 = __importDefault(require("./profilsortie.controller"));
+const authorize_1 = require("../auth/authorize");
 const router = (0, express_1.Router)();
-router.get("/", profilsortie_controller_1.default.getAll);
-router.post("/", profilsortie_controller_1.default.create);
-router.get("/:id", profilsortie_controller_1.default.getById);
-router.put("/:id", profilsortie_controller_1.default.update);
-router.patch("/:id", profilsortie_controller_1.default.partialUpdate);
-router.delete("/:id", profilsortie_controller_1.default.delete);
+router.get("/", (0, authorize_1.authorize)("profilsortie", "read"), profilsortie_controller_1.default.getAll.bind(profilsortie_controller_1.default));
+router.post("/", (0, authorize_1.authorize)("profilsortie", "create"), profilsortie_controller_1.default.create.bind(profilsortie_controller_1.default));
+router.get("/:id", (0, authorize_1.authorize)("profilsortie", "read"), profilsortie_controller_1.default.getById.bind(profilsortie_controller_1.default));
+router.put("/:id", (0, authorize_1.authorize)("profilsortie", "update"), profilsortie_controller_1.default.update.bind(profilsortie_controller_1.default));
+router.patch("/:id", (0, authorize_1.authorize)("profilsortie", "update"), profilsortie_controller_1.default.partialUpdate.bind(profilsortie_controller_1.default));
+router.delete("/:id", (0, authorize_1.authorize)("profilsortie", "delete"), profilsortie_controller_1.default.delete.bind(profilsortie_controller_1.default));
 exports.default = router;

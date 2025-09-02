@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const profilsortie_service_1 = __importDefault(require("./profilsortie.service"));
 const profilsortie_schema_1 = require("./profilsortie.schema");
-const profilSortieController = {
-    getAll: async (_req, res) => {
+class ProfilSortieController {
+    async getAll(_req, res) {
         try {
             const items = await profilsortie_service_1.default.getAll();
             res.json(items);
@@ -14,8 +14,8 @@ const profilSortieController = {
         catch (err) {
             res.status(500).json({ error: err.message });
         }
-    },
-    getById: async (req, res) => {
+    }
+    async getById(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id))
             return res.status(400).json({ error: "ID invalide" });
@@ -28,8 +28,8 @@ const profilSortieController = {
         catch (err) {
             res.status(500).json({ error: err.message });
         }
-    },
-    create: async (req, res) => {
+    }
+    async create(req, res) {
         const parseResult = profilsortie_schema_1.profilSortieSchema.safeParse(req.body);
         if (!parseResult.success) {
             return res.status(400).json({ error: parseResult.error.issues });
@@ -41,8 +41,8 @@ const profilSortieController = {
         catch (err) {
             res.status(400).json({ error: err.message });
         }
-    },
-    update: async (req, res) => {
+    }
+    async update(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id))
             return res.status(400).json({ error: "ID invalide" });
@@ -57,8 +57,8 @@ const profilSortieController = {
         catch (err) {
             res.status(400).json({ error: err.message });
         }
-    },
-    partialUpdate: async (req, res) => {
+    }
+    async partialUpdate(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id))
             return res.status(400).json({ error: "ID invalide" });
@@ -73,8 +73,8 @@ const profilSortieController = {
         catch (err) {
             res.status(400).json({ error: err.message });
         }
-    },
-    delete: async (req, res) => {
+    }
+    async delete(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id))
             return res.status(400).json({ error: "ID invalide" });
@@ -85,6 +85,6 @@ const profilSortieController = {
         catch (err) {
             res.status(404).json({ error: err.message });
         }
-    },
-};
-exports.default = profilSortieController;
+    }
+}
+exports.default = new ProfilSortieController();

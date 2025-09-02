@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_service_1 = __importDefault(require("./user.service"));
 const user_schema_1 = require("./user.schema");
-const userController = {
-    getAll: async (req, res) => {
+class UserController {
+    static async getAll(req, res) {
         try {
             const users = await user_service_1.default.getAll();
             res.json(users);
@@ -14,8 +14,8 @@ const userController = {
         catch (err) {
             res.status(500).json({ error: err.message });
         }
-    },
-    getById: async (req, res) => {
+    }
+    static async getById(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id)) {
             return res.status(400).json({ error: "ID invalide" });
@@ -29,8 +29,8 @@ const userController = {
         catch (err) {
             res.status(500).json({ error: err.message });
         }
-    },
-    update: async (req, res) => {
+    }
+    static async update(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id)) {
             return res.status(400).json({ error: "ID invalide" });
@@ -46,8 +46,8 @@ const userController = {
         catch (err) {
             res.status(400).json({ error: err.message });
         }
-    },
-    partialUpdate: async (req, res) => {
+    }
+    static async partialUpdate(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id)) {
             return res.status(400).json({ error: "ID invalide" });
@@ -63,8 +63,8 @@ const userController = {
         catch (err) {
             res.status(400).json({ error: err.message });
         }
-    },
-    create: async (req, res) => {
+    }
+    static async create(req, res) {
         const parseResult = user_schema_1.userSchema.safeParse(req.body);
         if (!parseResult.success) {
             return res.status(400).json({ error: parseResult.error.issues });
@@ -77,8 +77,8 @@ const userController = {
         catch (err) {
             res.status(400).json({ error: err.message });
         }
-    },
-    delete: async (req, res) => {
+    }
+    static async delete(req, res) {
         const id = Number(req.params.id);
         if (isNaN(id)) {
             return res.status(400).json({ error: "ID invalide" });
@@ -90,6 +90,6 @@ const userController = {
         catch (err) {
             res.status(404).json({ error: err.message });
         }
-    },
-};
-exports.default = userController;
+    }
+}
+exports.default = UserController;
