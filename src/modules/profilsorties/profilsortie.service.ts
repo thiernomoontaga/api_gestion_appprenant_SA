@@ -46,8 +46,14 @@ class ProfilSortieService implements IProfilSortieService {
   async delete(id: number) {
     await this.prisma.profilSortie.delete({ where: { id } });
     return { message: "ProfilSortie supprimé" };
+<<<<<<< HEAD
+  },
+};
+
+=======
   }
 }
 
 const profilSortieService = new ProfilSortieService();
 export default profilSortieService;
+>>>>>>> origin/tinkin
