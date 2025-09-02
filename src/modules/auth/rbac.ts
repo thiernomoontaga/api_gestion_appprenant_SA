@@ -14,6 +14,7 @@ export interface Role {
 export const profilsRBAC: Role[] = [
   {
     profilLibelle: "Administrateur",
+    
     permissions: [
       { resource: "utilisateur", action: "read" },
       { resource: "utilisateur", action: "write" },

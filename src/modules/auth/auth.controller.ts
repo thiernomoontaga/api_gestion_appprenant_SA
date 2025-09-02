@@ -76,7 +76,6 @@ export class AuthController {
     }
   }
 
-  // Endpoint pour rafraîchir le token d'accès
   static async refreshToken(req: Request, res: Response) {
     const refreshToken = req.cookies?.refreshToken;
     if (!refreshToken) {
@@ -88,7 +87,6 @@ export class AuthController {
         process.env.JWT_REFRESH_SECRET as string,
         { algorithms: ["HS512"] }
       );
-      // On retire les champs iat, exp du payload
       const { iat, exp, ...payload } = decoded as any;
       const accessToken = jwt.sign(
         payload,
@@ -106,8 +104,7 @@ export class AuthController {
     }
   }
 
-  static async register(req: Request, res: Response, next: NextFunction) {
-    // À implémenter : logique d'inscription
-    res.status(501).json({ message: "Non implémenté" });
-  }
+  // static async register(req: Request, res: Response, next: NextFunction) {
+  //   res.status(501).json({ message: "Non implémenté" });
+  // }
 }
