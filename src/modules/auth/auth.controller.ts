@@ -68,9 +68,7 @@ export class AuthController {
         sameSite: "strict",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
-      return res
-        .status(200)
-        .json({ user: { ...user, profilLibelle }, accessToken });
+      return res.status(200).json({ accessToken });
     } catch (error) {
       next(error);
     }
