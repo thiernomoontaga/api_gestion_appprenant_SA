@@ -1,11 +1,16 @@
 import type { Request, Response } from 'express';
 import { z } from 'zod';
+<<<<<<< HEAD
 import { niveauParamsSchema, createNiveauSchema, updateNiveauSchema, niveauQuerySchema } from './niveau.schema';
+=======
+import { niveauParamsSchema, createNiveauSchema, updateNiveauSchema } from './niveau.schema';
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
 import { NiveauService } from './niveau.service';
 
 export class NiveauController {
   static async getAllNiveaux(req: Request, res: Response) {
     try {
+<<<<<<< HEAD
       const queryOptions = niveauQuerySchema.parse(req.query);
       
       const result = await NiveauService.getAllNiveaux(queryOptions);
@@ -66,6 +71,19 @@ export class NiveauController {
 
 
        
+=======
+      const { competenceId } = req.query;
+      const competenceIdNumber = competenceId ? Number(competenceId) : undefined;
+      
+      const niveaux = await NiveauService.getAllNiveaux(competenceIdNumber);
+      
+      return res.json({
+        success: true,
+        data: niveaux,
+        message: 'Niveaux récupérés avec succès'
+      });
+    } catch (error) {
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
       return res.status(500).json({
         success: false,
         error: 'Erreur lors de la récupération des niveaux',

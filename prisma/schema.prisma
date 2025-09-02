@@ -3,7 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  // provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,27 +16,24 @@ enum StatutUtilisateur {
   suspendu
 }
 
-model Utilisateur {
+model Profil {
   id        Int      @id @default(autoincrement())
-  nom       String
-  prenom    String
-  email     String   @unique
-  password  String
-  login     String   @unique
-  statut    StatutUtilisateur
-
-  // Relations
-  profileId Int
-  profile   Profiles @relation(fields: [profileId], references: [id])
-}
-
-model Profiles {
-  id      Int          @id @default(autoincrement())
-  libelle String
-
-  // Relations
+  libelle   String
   utilisateurs Utilisateur[]
 }
+
+model Utilisateur {
+  id                Int      @id @default(autoincrement())
+  nom               String
+  prenom            String
+  email             String   @unique
+  password          String
+  login             String   @unique
+  statutUtilisateur String
+  profilId          Int
+  profil            Profil   @relation(fields: [profilId], references: [id])
+}
+
 
 model Promotion {
   id        Int       @id @default(autoincrement())
@@ -58,14 +56,13 @@ model Referentiel {
 }
 
 model ProfilSortie {
-  id          Int        @id @default(autoincrement())
-  libelle     String
-  description String?
-
-  // Relations
-  referentielId Int
-  referentiel   Referentiel @relation(fields: [referentielId], references: [id])
+  id                Int      @id @default(autoincrement())
+  libelle           String
+  description       String
+  referentielId     Int
+  referentiel       Referentiel @relation(fields: [referentielId], references: [id])
 }
+
 
 model Competence {
   id          Int       @id @default(autoincrement())
@@ -95,4 +92,8 @@ model Tag {
   competenceId Int
   competence   Competence @relation(fields: [competenceId], references: [id])
 }
+<<<<<<< HEAD
 
+
+=======
+>>>>>>> origin/tinkin

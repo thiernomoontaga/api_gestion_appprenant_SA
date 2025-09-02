@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dossiers
 node_modules/
 dist/
@@ -34,3 +35,23 @@ nodemon.json
 /test
 /tests
 /coverage
+=======
+node_modules/
+.env
+/src/generated/prisma
+
+<<<<<<< HEAD
+node_modules
+=======
+node_modules/
+>>>>>>> origin/tinkin
+# Keep environment variables out of version control
+.env
+
+/src/generated/prisma
+
+package-lock.json
+
+prisma/migrations
+.idea/
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd

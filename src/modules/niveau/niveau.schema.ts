@@ -1,6 +1,9 @@
 import { z } from 'zod';
+<<<<<<< HEAD
 import { paginationQuerySchema, searchQuerySchema } from '../../utils/pagination';
 import { sortQuerySchema } from '../../utils/sorting';
+=======
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
 
 export const createNiveauSchema = z.object({
   libelle: z.string()
@@ -30,6 +33,7 @@ export const niveauParamsSchema = z.object({
   })
 });
 
+<<<<<<< HEAD
 export const niveauQuerySchema = paginationQuerySchema
   .merge(searchQuerySchema)
   .merge(sortQuerySchema)
@@ -48,3 +52,8 @@ export type CreateNiveauDto = z.infer<typeof createNiveauSchema>;
 export type UpdateNiveauDto = z.infer<typeof updateNiveauSchema>;
 export type NiveauParamsDto = z.infer<typeof niveauParamsSchema>;
 export type NiveauQueryDto = z.infer<typeof niveauQuerySchema>;
+=======
+export type CreateNiveauDto = z.infer<typeof createNiveauSchema>;
+export type UpdateNiveauDto = z.infer<typeof updateNiveauSchema>;
+export type NiveauParamsDto = z.infer<typeof niveauParamsSchema>;
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd

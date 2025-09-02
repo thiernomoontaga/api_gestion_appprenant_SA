@@ -1,27 +1,48 @@
 {
-  "name": "api_gestion_apprenant_sa",
+  "name": "prozebi",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon server.js",
     "watch": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "build": "tsc && tsc-alias",
+    "start": "node dist/server.js"
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@prisma/client": "^6.15.0",
+<<<<<<< HEAD
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+=======
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^6.15.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "tsc-alias": "^1.8.16",
+    "yamljs": "^0.3.0",
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
     "zod": "^4.1.5"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.9",
     "@types/express": "^5.0.3",
+<<<<<<< HEAD
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
     "@types/supertest": "^6.0.3",
@@ -31,5 +52,13 @@
     "ts-jest": "^29.4.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
+=======
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@types/yamljs": "^0.2.34"
+  },
+  "prisma": {
+    "seed": "ts-node --transpile-only prisma/seed.ts"
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
   }
 }

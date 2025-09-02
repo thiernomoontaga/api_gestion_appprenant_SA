@@ -1,4 +1,5 @@
 import prisma from '../../config/prisma';
+<<<<<<< HEAD
 import type { CreateNiveauDto, UpdateNiveauDto, NiveauQueryDto } from './niveau.schema';
 import { NIVEAU_SORTABLE_FIELDS } from './niveau.schema';
 import { calculatePaginationOffsets, createPaginationResult, type PaginationResult } from '../../utils/pagination';
@@ -54,6 +55,30 @@ export class NiveauService {
     ]);
 
     return createPaginationResult(niveaux, total, { page, pageSize });
+=======
+import type { CreateNiveauDto, UpdateNiveauDto } from './niveau.schema';
+
+export class NiveauService {
+  static async getAllNiveaux(competenceId?: number) {
+    const where = competenceId ? { competenceId } : {};
+    
+    return await prisma.niveau.findMany({
+      where,
+      select: {
+        id: true,
+        libelle: true,
+        competence: {
+          select: {
+            id: true,
+            libelle: true
+          }
+        }
+      },
+      orderBy: {
+        libelle: 'asc'
+      }
+    });
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
   }
 
   static async getNiveauById(id: number) {
