@@ -6,6 +6,7 @@ import swaggerDoc from "./middlewares/swagger";
 import competenceRouter from "./modules/competence/competence.routes.js";
 import authRoutes from "./modules/auth/auth.routes";
 import { protectRoute } from "./modules/auth/auth.middleware";
+import { niveauRouter } from "./modules/niveau";
 
 const app = express();
 
@@ -23,4 +24,5 @@ app.use((req, res, next) => {
 app.use("/utilisateurs", userRoutes);
 app.use("/profilsorties", profilSortieRoutes);
 app.use("/competences", competenceRouter);
+app.use("/niveaux", niveauRouter);
 export default app;

@@ -11,6 +11,7 @@ const swagger_1 = __importDefault(require("./middlewares/swagger"));
 const competence_routes_js_1 = __importDefault(require("./modules/competence/competence.routes.js"));
 const auth_routes_1 = __importDefault(require("./modules/auth/auth.routes"));
 const auth_middleware_1 = require("./modules/auth/auth.middleware");
+const niveau_1 = require("./modules/niveau");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
@@ -24,4 +25,5 @@ app.use((req, res, next) => {
 app.use("/utilisateurs", user_routes_1.default);
 app.use("/profilsorties", profilsortie_routes_1.default);
 app.use("/competences", competence_routes_js_1.default);
+app.use("/niveaux", niveau_1.niveauRouter);
 exports.default = app;

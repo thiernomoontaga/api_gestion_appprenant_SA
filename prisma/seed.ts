@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
@@ -13,12 +13,13 @@ async function main() {
   await prisma.referentiel.deleteMany();
   await prisma.promotion.deleteMany();
   await prisma.profil.deleteMany();
-  // Création de profils (5)
   const profils = await prisma.profil.createMany({
     data: [
       { libelle: "Administrateur" },
       { libelle: "Apprenant" },
       { libelle: "Formateur" },
+      { libelle: "CM" },
+      { libelle: "Invité" },
     ],
   });
   const allProfils = await prisma.profil.findMany();
@@ -26,11 +27,11 @@ async function main() {
   // Création d'utilisateurs (5) avec mot de passe hashé
   const utilisateursSeed = [
     {
-      nom: "Doe",
-      prenom: "John",
-      email: "john.doe@example.com",
-      password: "password123",
-      login: "johndoe",
+      nom: "admin",
+      prenom: "admin",
+      email: "admin@example.com",
+      password: "admin1234",
+      login: "admin",
       statutUtilisateur: "actif",
       profilId: allProfils[0].id,
     },

@@ -92,8 +92,5 @@ model Tag {
   competenceId Int
   competence   Competence @relation(fields: [competenceId], references: [id])
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> origin/tinkin
