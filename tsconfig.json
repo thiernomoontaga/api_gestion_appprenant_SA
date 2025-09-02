@@ -7,19 +7,8 @@
     "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
-<<<<<<< HEAD
     "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
-=======
-    "skipLibCheck": true,
-    "baseUrl": "src",
-    "paths": {
-      "*": ["src/*"]
-    }
-  },
-  "include": ["src/**/*.ts"]
->>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
 }
-
