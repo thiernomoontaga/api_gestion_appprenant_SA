@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "1e2a9b57-5a58-4d3f-8ff8-186cb90d9e4e",
+		"name": "Api gest apprenant",
+		"description": "\"Endpoints pour gérer les niveaux, utilisateurs, profils",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47862266",
+		"_collection_link": "https://zaffservice-s-team.postman.co/workspace/c1efa9b8-21fd-4eea-8801-79b9ab9f9ece/collection/47862266-1e2a9b57-5a58-4d3f-8ff8-186cb90d9e4e?action=share&source=collection_link&creator=47862266"
+	},
+	"item": [
+		{
+			"name": "GET - Tous les niveaux",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/niveaux",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Créer un niveau",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"libelle\": \"N2 - Intermédiaire\",\n  \"competenceId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/niveaux",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Niveau par ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/niveaux/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Modifier un niveau",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"libelle\": \"N1 - Débutant Modifié\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/niveaux/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Supprimer un niveau",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/niveaux/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Niveaux par compétence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/niveaux/competence/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux",
+						"competence",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Niveaux filtrés par compétence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/niveaux?competenceId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"niveaux"
+					],
+					"query": [
+						{
+							"key": "competenceId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
