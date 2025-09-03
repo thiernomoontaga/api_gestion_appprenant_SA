@@ -1,10 +1,8 @@
-// prisma/seed.ts
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
 async function main() {
-  // Création des profils
   const profilAdmin = await prisma.profil.create({
     data: {
       libelle: 'Administrateur'
@@ -23,7 +21,6 @@ async function main() {
     }
   })
 
-  // Création des utilisateurs
   await prisma.utilisateur.createMany({
     data: [
       {
@@ -65,7 +62,6 @@ async function main() {
     ]
   })
 
-  // Création des promotions
   const promotion2024 = await prisma.promotion.create({
     data: {
       date_debut: new Date('2024-01-15'),
@@ -80,7 +76,6 @@ async function main() {
     }
   })
 
-  // Création des référentiels
   const referentielDevWeb = await prisma.referentiel.create({
     data: {
       libelle: 'Développement Web Fullstack',
@@ -97,7 +92,6 @@ async function main() {
     }
   })
 
-  // Création des profils de sortie
   await prisma.profilSortie.createMany({
     data: [
       {
@@ -123,7 +117,6 @@ async function main() {
     ]
   })
 
-  // Création des compétences
   const competenceFrontend = await prisma.competence.create({
     data: {
       libelle: 'Développement Frontend',
@@ -145,10 +138,8 @@ async function main() {
     }
   })
 
-  // Création des niveaux
   await prisma.niveau.createMany({
     data: [
-      // Niveaux pour Frontend
       {
         libelle: 'Débutant',
         competenceId: competenceFrontend.id
@@ -162,7 +153,6 @@ async function main() {
         competenceId: competenceFrontend.id
       },
       
-      // Niveaux pour Backend
       {
         libelle: 'Débutant',
         competenceId: competenceBackend.id
@@ -176,7 +166,6 @@ async function main() {
         competenceId: competenceBackend.id
       },
       
-      // Niveaux pour Data
       {
         libelle: 'Débutant',
         competenceId: competenceData.id
@@ -192,7 +181,6 @@ async function main() {
     ]
   })
 
-  // Création des tags
   await prisma.tag.createMany({
     data: [
       {

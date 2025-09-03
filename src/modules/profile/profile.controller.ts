@@ -15,6 +15,7 @@ export default class ProfileController extends BaseController<UpdateProfileInput
     created: ProfileMessage.Created,
     updated: ProfileMessage.Updated,
     deleted: ProfileMessage.Deleted,
+    notFound: ProfileMessage.NotFound
   };
 }
 
