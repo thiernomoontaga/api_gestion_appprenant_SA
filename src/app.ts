@@ -24,3 +24,4 @@ app.use("/utilisateurs", userRoutes);
 app.use("/profilsorties", profilSortieRoutes);
 app.use("/competences", competenceRouter);
 export default app;
+
