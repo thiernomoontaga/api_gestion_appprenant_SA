@@ -1,6 +1,10 @@
 import { Router } from "express";
+<<<<<<< HEAD
 import UserController from "./user.controller";
 import { authorize } from "../auth/authorize";
+=======
+import userController from "./user.controller.js";
+>>>>>>> origin/gorgui_work
 
 const router = Router();
 

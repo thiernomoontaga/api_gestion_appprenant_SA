@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
+<<<<<<< HEAD
 import UserService from "./user.service";
 import { userSchema, userUpdateSchema, userPatchSchema } from "./user.schema";
+=======
+import userService from "./user.service.js";
+import { userSchema, userUpdateSchema, userPatchSchema } from "./user.schema.js";
+>>>>>>> origin/gorgui_work
 
 class UserController {
   static async getAll(req: Request, res: Response) {

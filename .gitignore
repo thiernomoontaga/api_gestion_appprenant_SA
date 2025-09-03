@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Dossiers
 node_modules/
 dist/
@@ -55,3 +56,13 @@ package-lock.json
 prisma/migrations
 .idea/
 >>>>>>> a1a232da56c46924a716dd547014a552125c5dcd
+=======
+/node_modules
+.env
+/src/generated/prisma
+request.http
+dist/
+/src/modules/authModels
+/src/middlewares/permission.ts
+/src/config/tablesRBAC.ts
+>>>>>>> origin/gorgui_work

@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "dist",
+    "target": "ES2021",
+    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
     "rootDir": "src",
+    "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
+<<<<<<< HEAD
     "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
+=======
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "typeRoots": ["./src/types", "./node_modules/@types"]
+  }
+>>>>>>> origin/gorgui_work
 }

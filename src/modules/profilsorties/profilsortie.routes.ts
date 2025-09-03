@@ -1,6 +1,10 @@
 import { Router } from "express";
+<<<<<<< HEAD
 import profilSortieController from "./profilsortie.controller";
 import { authorize } from "../auth/authorize";
+=======
+import profilSortieController from "./profilsortie.controller.js";
+>>>>>>> origin/gorgui_work
 
 const router = Router();
 

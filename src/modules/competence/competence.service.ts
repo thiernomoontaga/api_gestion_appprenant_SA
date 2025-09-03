@@ -1,5 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-import { CreateCompetenceInput, UpdateCompetenceInput } from "./competence.schema.js";
+import {
+  CreateCompetenceInput,
+  UpdateCompetenceInput,
+} from "./competence.schema.js";
 
 const prisma = new PrismaClient();
 

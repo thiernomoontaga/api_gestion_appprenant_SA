@@ -1,7 +1,9 @@
-// src/controllers/competence.controller.ts
 import { Request, Response } from "express";
 import { CompetenceService } from "./competence.service.js";
-import { createCompetenceSchema, updateCompetenceSchema } from "./competence.schema.js";
+import {
+  createCompetenceSchema,
+  updateCompetenceSchema,
+} from "./competence.schema.js";
 
 export class CompetenceController {
   static async create(req: Request, res: Response) {
@@ -22,7 +24,8 @@ export class CompetenceController {
   static async getOne(req: Request, res: Response) {
     const { id } = req.params;
     const competence = await CompetenceService.findById(Number(id));
-    if (!competence) return res.status(404).json({ error: "Compétence introuvable" });
+    if (!competence)
+      return res.status(404).json({ error: "Compétence introuvable" });
     res.status(200).json(competence);
   }
 

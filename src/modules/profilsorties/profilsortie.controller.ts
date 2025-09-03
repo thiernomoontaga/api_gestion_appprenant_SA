@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import profilSortieService from "./profilsortie.service";
+import profilSortieService from "./profilsortie.service.js";
 import {
   profilSortieSchema,
   profilSortieUpdateSchema,
-} from "./profilsortie.schema";
+} from "./profilsortie.schema.js";
 
 class ProfilSortieController {
   async getAll(_req: Request, res: Response) {
