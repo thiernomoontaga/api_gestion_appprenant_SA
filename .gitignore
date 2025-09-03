@@ -1,3 +1,41 @@
+<<<<<<< HEAD
+# Dossiers
+node_modules/
+dist/
+build/
+coverage/
+
+# Fichiers de configuration
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers de dépendances
+package-lock.json
+yarn.lock
+
+# Ignorer tout dans src sauf le dossier niveau
+/src/*
+!/src/modules/
+/src/modules/*
+!/src/modules/niveau/
+
+# Configuration
+tsconfig.json
+nodemon.json
+
+# Tests
+/test
+/tests
+/coverage
+=======
 node_modules/
 .env
 /src/generated/prisma
@@ -16,3 +54,4 @@ package-lock.json
 
 prisma/migrations
 .idea/
+>>>>>>> a1a232da56c46924a716dd547014a552125c5dcd

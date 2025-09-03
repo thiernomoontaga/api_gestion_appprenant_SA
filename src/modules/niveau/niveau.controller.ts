@@ -1,22 +1,29 @@
 import type { Request, Response } from 'express';
 import { z } from 'zod';
-import { niveauParamsSchema, createNiveauSchema, updateNiveauSchema } from './niveau.schema';
+import { niveauParamsSchema, createNiveauSchema, updateNiveauSchema, niveauQuerySchema } from './niveau.schema';
 import { NiveauService } from './niveau.service';
 
 export class NiveauController {
   static async getAllNiveaux(req: Request, res: Response) {
     try {
-      const { competenceId } = req.query;
-      const competenceIdNumber = competenceId ? Number(competenceId) : undefined;
+      const queryOptions = niveauQuerySchema.parse(req.query);
       
-      const niveaux = await NiveauService.getAllNiveaux(competenceIdNumber);
+      const result = await NiveauService.getAllNiveaux(queryOptions);
       
       return res.json({
         success: true,
-        data: niveaux,
+        ...result,
         message: 'Niveaux récupérés avec succès'
       });
     } catch (error) {
+      if (error instanceof Error && error.name === 'ZodError') {
+        return res.status(400).json({
+          success: false,
+          error: 'Paramètres de requête invalides',
+          details: error.message
+        });
+      }
+      
       return res.status(500).json({
         success: false,
         error: 'Erreur lors de la récupération des niveaux',

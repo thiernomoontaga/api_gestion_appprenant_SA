@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { paginationQuerySchema, searchQuerySchema } from '../../utils/pagination';
+import { sortQuerySchema } from '../../utils/sorting';
 
 export const createNiveauSchema = z.object({
   libelle: z.string()
@@ -28,6 +30,21 @@ export const niveauParamsSchema = z.object({
   })
 });
 
+export const niveauQuerySchema = paginationQuerySchema
+  .merge(searchQuerySchema)
+  .merge(sortQuerySchema)
+  .extend({
+    competenceId: z.string()
+      .optional()
+      .transform((val) => val ? parseInt(val, 10) : undefined)
+      .refine((val) => val === undefined || (val > 0), {
+        message: "L'ID de compétence doit être un nombre positif"
+      })
+  });
+
+export const NIVEAU_SORTABLE_FIELDS = ['id', 'libelle'] as const;
+
 export type CreateNiveauDto = z.infer<typeof createNiveauSchema>;
 export type UpdateNiveauDto = z.infer<typeof updateNiveauSchema>;
 export type NiveauParamsDto = z.infer<typeof niveauParamsSchema>;
+export type NiveauQueryDto = z.infer<typeof niveauQuerySchema>;

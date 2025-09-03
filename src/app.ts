@@ -1,27 +1,26 @@
-import express from "express";
-import cookieParser from "cookie-parser";
-import userRoutes from "./modules/users/user.routes";
-import profilSortieRoutes from "./modules/profilsorties/profilsortie.routes";
-import swaggerDoc from "./middlewares/swagger";
-import competenceRouter from "./modules/competence/competence.routes.js";
-import authRoutes from "./modules/auth/auth.routes";
-import { protectRoute } from "./modules/auth/auth.middleware";
+import express from 'express';
+// import cors from 'cors';
+// import { profilesRoutes } from './routes/profiles.routes';
+// import { utilisateurRoutes } from './routes/utilisateur.routes';
+import { niveauRouter } from './modules/niveau/niveau.routes';
 
 const app = express();
 
+// Middlewares
+// app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
-app.use(swaggerDoc);
 
-app.use("/auth", authRoutes);
+// Routes API
+// app.use('/api/profiles', profilesRoutes);
+// app.use('/api/users', utilisateurRoutes);
+app.use('/niveaux', niveauRouter);
 
-app.use((req, res, next) => {
-  if (req.path.startsWith("/auth")) return next();
-  protectRoute(req, res, next);
+app.use((req, res) => {
+  return res.status(404).json({
+    success: false,
+    error: 'Route non trouvée'
+  });
 });
 
-app.use("/utilisateurs", userRoutes);
-app.use("/profilsorties", profilSortieRoutes);
-app.use("/competences", competenceRouter);
 export default app;
 
