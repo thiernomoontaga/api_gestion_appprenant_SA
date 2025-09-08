@@ -9,7 +9,7 @@ L’objectif est de proposer une **API RESTful maintenable et modulaire**, avec 
 
 ---
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 - **[TypeScript](https://www.typescriptlang.org/)** – Typage fort et structuration du code  
 - **[Express.js](https://expressjs.com/)** – Framework minimaliste pour Node.js  
@@ -21,7 +21,7 @@ L’objectif est de proposer une **API RESTful maintenable et modulaire**, avec 
 
 ---
 
-## 📂 Structure du projet
+##  Structure du projet
 
 ```bash
 my-app/
@@ -51,7 +51,7 @@ my-app/
 
 ---
 
-## ⚙️ Installation et configuration
+## Installation et configuration
 
 ### 1. Cloner le projet
 ```bash
@@ -84,44 +84,44 @@ npm run dev
 
 ---
 
-## 📌 Endpoints disponibles (Sprint 01)
+##  Endpoints disponibles (Sprint 01)
 
-### 🔹 Users
+###  Users
 - `GET /users` – Récupérer tous les utilisateurs
 - `POST /users` – Créer un utilisateur
 - `GET /users/:id` – Récupérer un utilisateur par ID
 - `PUT /users/:id` – Mettre à jour un utilisateur
 - `DELETE /users/:id` – Supprimer un utilisateur
 
-### 🔹 Profiles
+###  Profiles
 - `GET /profiles`
 - `POST /profiles`
 - ...
 
-### 🔹 Promos
+### Promos
 - `GET /promos`
 - `POST /promos`
 - `GET /promos/:id/formateurs`
 
-### 🔹 Niveaux
+###  Niveaux
 - `GET /niveaux`
 - `POST /niveaux`
 
-### 🔹 Compétences
+###  Compétences
 - `GET /competences`
 - `POST /competences`
 - `GET /competences/:id/niveaux`
 
-### 🔹 Référentiels
+###  Référentiels
 - `GET /referentiels`
 - `POST /referentiels`
 - `GET /referentiels/:id/competences`
 
-### 🔹 Tags
+###  Tags
 - `GET /tags`
 - `POST /tags`
 
-### 🔹 Profils de sortie
+###  Profils de sortie
 - `GET /profils-sortie`
 - `POST /profils-sortie`
 
@@ -171,7 +171,7 @@ export default app;
 
 ---
 
-## ✅ Bonnes pratiques adoptées
+##  Bonnes pratiques adoptées
 
 - **Architecture feature-based** (chaque ressource = module indépendant)  
 - **Validation avec Zod** pour sécuriser les entrées utilisateurs  
@@ -182,7 +182,7 @@ export default app;
 
 ---
 
-## 🚧 Roadmap
+## Roadmap
 
 - [x] Sprint 01 : Endpoints CRUD basiques (sans authentification)  
 - [x] Swagger : Documentation API interactive  
@@ -192,7 +192,7 @@ export default app;
 
 ---
 
-## 👨‍💻 Auteur
+## 👨 Auteur
 
 Projet réalisé par **[Ton Nom]**  
 📧 Contact : [ton.email@example.com]  
