@@ -1,6 +1,6 @@
-# 📘 Projet API – Gestion des Apprenants
+#  Projet API – Gestion des Apprenants
 
-## 🚀 Description
+## Description
 
 Cette API a été développée en **TypeScript** avec **Express**, **Prisma**, **Zod** et **MySQL**.  
 Elle permet de gérer les **apprenants, promotions, profils, compétences, référentiels, tags et niveaux** dans le cadre d’un projet de gestion de formation.  
@@ -189,8 +189,8 @@ export default app;
 
 ---
 
-## 👨 Auteur
+##  Auteur
 
 Projet réalisé par **[Ton Nom]**  
-📧 Contact : [ton.email@example.com]  
-🌐 GitHub : [github.com/ton-compte](https://github.com/ton-compte)
+Contact : [ton.email@example.com]  
+🌐GitHub : [github.com/ton-compte](https://github.com/ton-compte)
