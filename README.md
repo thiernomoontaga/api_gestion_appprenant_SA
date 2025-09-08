@@ -185,10 +185,7 @@ export default app;
 ## Roadmap
 
 - [x] Sprint 01 : Endpoints CRUD basiques (sans authentification)  
-- [x] Swagger : Documentation API interactive  
-- [ ] Sprint 02 : Authentification & rôles (JWT, formateurs/apprenants/admin)  
-- [ ] Sprint 03 : Tests unitaires & CI/CD  
-- [ ] Sprint 04 : Déploiement (Docker + hébergeur cloud)  
+
 
 ---
 
